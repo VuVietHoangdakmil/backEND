@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DATA-SHOP-QUAN-AO" Class="DbWebQuanAoDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=HOANG;Initial Catalog=DATA-SHOP-QUAN-AO;User ID=hoang" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DATA_SHOP_QUAN_AOConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.MAU" Member="MAUs">
+    <Type Name="MAU">
+      <Column Name="MA_MAU" Type="System.String" DbType="NVarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TEN_MAU" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="MAU_SAN_PHAM" Member="SAN_PHAMs" ThisKey="MA_MAU" OtherKey="MA_MAU" Type="SAN_PHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.LOAI_SP" Member="LOAI_SPs">
+    <Type Name="LOAI_SP">
+      <Column Name="MA_LOAI" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEN_LOAI" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Association Name="LOAI_SP_SAN_PHAM" Member="SAN_PHAMs" ThisKey="MA_LOAI" OtherKey="MA_LOAI" Type="SAN_PHAM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SAN_PHAM" Member="SAN_PHAMs">
+    <Type Name="SAN_PHAM">
+      <Column Name="MA_SP" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MA_MAU" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MA_LOAI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TEN_SP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GIA_MUA" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GIA_BAN" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MO_TA" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="HINH_ANH" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="HINH_ANH1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SAN_PHAM_KICH_THUOC" Member="KICH_THUOCs" ThisKey="MA_SP" OtherKey="MA_SP" Type="KICH_THUOC" />
+      <Association Name="SAN_PHAM_HINH_ANH" Member="HINH_ANHs" ThisKey="MA_SP" OtherKey="MA_HINH" Type="HINH_ANH" />
+      <Association Name="LOAI_SP_SAN_PHAM" Member="LOAI_SP" ThisKey="MA_LOAI" OtherKey="MA_LOAI" Type="LOAI_SP" IsForeignKey="true" />
+      <Association Name="MAU_SAN_PHAM" Member="MAU" ThisKey="MA_MAU" OtherKey="MA_MAU" Type="MAU" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KHACH_HANG" Member="KHACH_HANGs">
+    <Type Name="KHACH_HANG">
+      <Column Name="MA_KH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEN_KH" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="SDT" Type="System.String" DbType="NVarChar(11)" CanBeNull="true" />
+      <Column Name="DIA_CHI" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TEN_DN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MK_DN" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="EMAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="NGAY_SINH" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="HINH_ANH" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="GIOI_TINH" Type="System.String" DbType="NVarChar(4)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.KICH_THUOC" Member="KICH_THUOCs">
+    <Type Name="KICH_THUOC">
+      <Column Name="MA_KICH_THUOC" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MA_SP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TEN_KICH_THUOC" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Association Name="SAN_PHAM_KICH_THUOC" Member="SAN_PHAM" ThisKey="MA_SP" OtherKey="MA_SP" Type="SAN_PHAM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HINH_ANH" Member="HINH_ANHs">
+    <Type Name="HINH_ANH">
+      <Column Name="MA_HINH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="MA_SP" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HINH_ANH" Member="HINH_ANH1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Association Name="SAN_PHAM_HINH_ANH" Member="SAN_PHAM" ThisKey="MA_HINH" OtherKey="MA_SP" Type="SAN_PHAM" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

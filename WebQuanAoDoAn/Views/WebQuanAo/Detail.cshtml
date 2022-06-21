@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/layOutWebQuanAo.cshtml";
+}
+
+<section id="products">
+    <div class="row">
+        <div class="product-img">
+            <div class="product-gallery">
+                <div class="product-container">
+                    @Html.Action("IMAGE", "WebQuanAo")
+                </div>
+                <div class="image-slider" style="background-image:url(/img/products/@Model.HINH_ANH)">
+                </div>
+
+            </div>
+        </div>
+
+        <div class="product-content">
+            <div class="product-title">
+                <h1>@Model.TEN_SP</h1>
+            </div>
+            <div class="product-price">
+                <span class="pro-price">@String.Format("{0:0,0}", Model.GIA_BAN) đ</span>
+            </div>
+
+            <div class="size">
+                @*<input type="radio" name="size" value="s" checked hidden id="s-size">
+                    <label for="s-size" class="size-radio-btn check">S</label>
+                    <input type="radio" name="size" value="m" hidden id="m-size">
+                    <label for="m-size" class="size-radio-btn">M</label>
+                    <input type="radio" name="size" value="l" hidden id="l-size">
+                    <label for="l-size" class="size-radio-btn">L</label>
+                    <input type="radio" name="size" value="xl" hidden id="xl-size">
+                    <label for="xl-size" class="size-radio-btn">XL</label>*@
+                @Html.Action("Size", "WebQuanAo")
+            </div>
+            <div class="color">
+                <i class="fas fa-square" style="color: #1b1b1b"></i>
+            </div>
+            <div class="selector-actions">
+                <div class="quantity-area">
+                    <input type="button" value="-" onclick="minusQuantity()" class="qty-btn">
+                    <input type="text" id="quantity" name="quantity" value="1" min="1" class="quantity-selector">
+                    <input type="button" value="+" onclick="plusQuantity()" class="qty-btn">
+                </div>
+                <div>
+                    <button type="button" id="add-to-cart" class="button dark" name="add">Thêm vào giỏ</button>
+                </div>
+            </div>
+            <div class="product-description">
+                <h3>Mô tả</h3>
+                <div class="description-content">
+                    <p style="margin-bottom:11px;"><strong>OVERSIZED FIT</strong></p>
+                    <p style="margin-bottom:11px"><strong>Your new "Everyday-Sweater"</strong></p>
+                    <p style="margin-bottom:11px">
+                        <strong>Features:</strong><br>
+                        • Chất liệu: Cotton<br>
+                        • Graphic in lụa
+                    </p>
+                    <p style="margin-bottom:11px">
+                        <strong>Fitting:</strong><br>
+                        • Model cao 1m83 - nặng 80kg<br>
+                        • Áo mặc size XL
+                        <span style="color:#e67e22">(Oversized Fit)</span>
+                    </p>
+                    <p style="margin-bottom:11px">&nbsp</p>
+                    <p style="margin-bottom:11px"><hr></p>
+                    <p>&nbsp</p>
+                    <p><img src="../img/Size/T-shirt.png" alt=""></p>
+                </div>
+            </div>
+</section>
+<section id="product1" style="padding: 0;">
+    <div class="wrapper-heading-home wrapper-heading-home-new">
+        <div class="wrapper-animation">
+            <span class="text-animation">
+                <h2>
+                    <a href="/collections/trang-chu">
+                        BRAND LIMITED
+                    </a>
+                </h2>
+            </span>
+            <span class="text-animation">
+                <h2>
+                    <a href="/collections/trang-chu">
+                        BRAND LIMITED
+                    </a>
+                </h2>
+            </span>
+            <span class="text-animation">
+                <h2>
+                    <a href="/collections/trang-chu">
+                        BRAND LIMITED
+                    </a>
+                </h2>
+            </span>
+            <span class="text-animation">
+                <h2>
+                    <a href="/collections/trang-chu">
+                        BRAND LIMITED
+                    </a>
+                </h2>
+            </span>
+            <span class="text-animation">
+                <h2>
+                    <a href="/collections/trang-chu">
+                        BRAND LIMITED
+                    </a>
+                </h2>
+            </span>
+        </div>
+    </div>
+    <div class="pro-container">
+        <div class="pro">
+            <div class="pro-img">
+                <picture>
+                    <img src="/img/limited/1.jpg" alt="">
+                </picture>
+                <picture>
+                    <a href="./cart.html"><img src="/img/limited/1.1.jpg" alt=""></a>
+                </picture>
+                <div class="buy-btn">
+                    <button>THÊM VÀO GIỎ</button>
+                </div>
+            </div>
+            <div class="des">
+                <div class="square">
+                    <i class="fas fa-square" style="color: #ececec;"></i>
+                </div>
+                <h5>GREEN COBWEB TEE</h5>
+                <h4>380,000₫</h4>
+            </div>
+        </div>
+        <div class="pro">
+            <div class="pro-img">
+                <picture>
+                    <img src="/img/limited/2.jpg" alt="">
+                </picture>
+                <picture>
+                    <a href="./cart.html"><img src="/img/limited/2.1.jpg" alt=""></a>
+                </picture>
+                <div class="buy-btn">
+                    <button>THÊM VÀO GIỎ</button>
+                </div>
+            </div>
+            <div class="des">
+                <div class="square">
+                    <i class="fas fa-square"></i>
+                    <i class="fas fa-square" style="color: #ececec;"></i>
+                </div>
+                <h5>H MONOGRAM GILE</h5>
+                <h4>420,000₫</h4>
+            </div>
+        </div>
+        <div class="pro">
+            <div class="pro-img">
+                <picture>
+                    <img src="/img/limited/3.jpg" alt="">
+                </picture>
+                <picture>
+                    <a href="./cart.html"><img src="/img/limited/3.1.jpg" alt=""></a>
+                </picture>
+                <div class="buy-btn">
+                    <button>THÊM VÀO GIỎ</button>
+                </div>
+            </div>
+            <div class="des">
+                <div class="square">
+                    <i class="fas fa-square"></i>
+                </div>
+                <h5>H BLACK TROUSER PANTS</h5>
+                <h4>490,000₫</h4>
+            </div>
+        </div>
+        <div class="pro">
+            <div class="pro-img">
+                <picture>
+                    <img src="/img/limited/4.jpg" alt="">
+                </picture>
+                <picture>
+                    <a href="./cart.html"><img src="/img/limited/4.1.jpg" alt=""></a>
+                </picture>
+                <div class="buy-btn">
+                    <button>THÊM VÀO GIỎ</button>
+                </div>
+            </div>
+            <div class="des">
+                <div class="square">
+                    <i class="fas fa-square"></i>
+                </div>
+                <h5>H MONOGRAM BAGS</h5>
+                <h4>650,000₫</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
